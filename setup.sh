@@ -2,15 +2,13 @@ set -e
 set -x
 
 echo 'Downloading Lama model (reference https://github.com/advimman/lama/blob/main/README.md)'
-orginal_dir=$(pwd)
-cd ./src
 #check if big-lama.zip file exists
 if [ ! -f "./big-lama.zip" ]; then
     echo "Downloading big-lama.zip"
     curl -LJO https://huggingface.co/smartywu/big-lama/resolve/main/big-lama.zip
 fi
-unzip big-lama.zip -d big-lama/
-cd $orginal_dir
+unzip big-lama.zip
+rm -fr big-lama.zip
 
 git submodule update --init --recursive
 

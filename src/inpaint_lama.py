@@ -1,5 +1,6 @@
 import logging
 import os
+
 import cv2
 import numpy as np
 import torch
@@ -11,7 +12,9 @@ from saicinpainting.evaluation.utils import move_to_device
 from saicinpainting.training.data.datasets import make_default_val_dataset
 from saicinpainting.training.trainers import load_checkpoint
 from torch.utils.data._utils.collate import default_collate
+
 from inpaint import Inpainter
+from src import directories
 
 os.environ["OMP_NUM_THREADS"] = "1"
 os.environ["OPENBLAS_NUM_THREADS"] = "1"
@@ -23,11 +26,11 @@ log = logging.getLogger(__name__)
 
 class LamaInpainter(Inpainter):
     def __init__(
-        self,
-        abs_model_path: str,
-        abs_input_dir: str,
-        abs_output_dir: str,
-        img_suffix: str,
+            self,
+            abs_model_path: str,
+            abs_input_dir: str,
+            abs_output_dir: str,
+            img_suffix: str,
     ):
         '''"""
         Initializes the instance variables of the class.
@@ -58,11 +61,17 @@ class LamaInpainter(Inpainter):
         )
         from omegaconf import OmegaConf
 
-        omega_conf = OmegaConf.load("lama-configs/prediction/default.yaml")
+        omega_conf = OmegaConf.load(os.path.join(directories.third_party_dir, "lama", "configs", "prediction", "default.yaml"))
         omega_conf.model.path = self.abs_model_path
         omega_conf.indir = self.abs_input_dir
         omega_conf.outdir = self.abs_output_dir
         omega_conf.dataset.img_suffix = self.img_suffix
+        if torch.cuda.is_available():
+            log.info("CUDA is available, using GPU")
+            omega_conf.device = "cuda"
+        else:
+            log.info("CUDA is not available, using CPU")
+            omega_conf.device = "cpu"
         return run_prediction(omega_conf)
 
 
@@ -106,13 +115,13 @@ def run_prediction(predict_config: OmegaConf) -> list[str]:
         mask_fname = dataset.mask_filenames[img_i]
         cur_out_fname = os.path.join(
             predict_config.outdir,
-            os.path.splitext(mask_fname[len(predict_config.indir) :])[0] + out_ext,
+            os.path.splitext(mask_fname[len(predict_config.indir):])[0] + out_ext,
         )
         os.makedirs(os.path.dirname(cur_out_fname), exist_ok=True)
         batch = default_collate([dataset[img_i]])
         if predict_config.get("refine", False):
             assert (
-                "unpad_to_size" in batch
+                    "unpad_to_size" in batch
             ), "Unpadded size is required for the refinement"
             cur_res = refine_predict(batch, model, **predict_config.refiner)
             cur_res = cur_res[0].permute(1, 2, 0).detach().cpu().numpy()
