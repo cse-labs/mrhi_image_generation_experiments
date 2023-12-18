@@ -7,8 +7,12 @@ if [ ! -f "./big-lama.zip" ]; then
     echo "Downloading big-lama.zip"
     curl -LJO https://huggingface.co/smartywu/big-lama/resolve/main/big-lama.zip
 fi
-unzip big-lama.zip
-rm -fr big-lama.zip
+#check if big-lama directory exists
+if [ ! -d "./big-lama" ]; then
+    echo "Unzipping big-lama.zip"
+    unzip big-lama.zip
+fi
+#rm -fr big-lama.zip
 
 git submodule update --init --recursive
 
@@ -31,6 +35,14 @@ for dir in ./third_party/*/; do
     fi
 done
 
+conda install  -y detectron2 -c conda-forge
+#pip install git+https://github.com/facebookresearch/detectron2.git
+export EXIT_STATUS=$?
+if [ $EXIT_STATUS -ne 0 ]; then
+    echo "Failed to install detectron2 module"
+    exit 1
+fi
+
 #install the generated artifacts
 for file in ./lib/*.tar.gz; do
     echo "Installing $file"
@@ -45,13 +57,7 @@ if [ $EXIT_STATUS -ne 0 ]; then
     exit 1
 fi
 
-conda install  -y detectron2 -c conda-forge
-#pip install git+https://github.com/facebookresearch/detectron2.git
-export EXIT_STATUS=$?
-if [ $EXIT_STATUS -ne 0 ]; then
-    echo "Failed to install detectron2 module"
-    exit 1
-fi
+
 
 #install pyfftw module however if it fails installation ignore
 conda install -y pyfftw -c conda-forge

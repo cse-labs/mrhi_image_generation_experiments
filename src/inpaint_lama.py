@@ -13,8 +13,8 @@ from saicinpainting.training.data.datasets import make_default_val_dataset
 from saicinpainting.training.trainers import load_checkpoint
 from torch.utils.data._utils.collate import default_collate
 
+import directories
 from inpaint import Inpainter
-from src import directories
 
 os.environ["OMP_NUM_THREADS"] = "1"
 os.environ["OPENBLAS_NUM_THREADS"] = "1"
