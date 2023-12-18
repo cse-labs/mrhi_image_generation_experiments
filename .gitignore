@@ -40,3 +40,5 @@ local_settings.py
 
 # Ignore logs
 *.log
+/src/images/
+/lib/
