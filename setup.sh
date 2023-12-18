@@ -11,6 +11,9 @@ if [ ! -f "./big-lama.zip" ]; then
 fi
 unzip big-lama.zip -d big-lama/
 cd $orginal_dir
+
+git submodule update --init --recursive
+
 #for each project in third_party directory run the setup.py if present
 orginal_dir=$(pwd)
 for dir in ./third_party/*/; do

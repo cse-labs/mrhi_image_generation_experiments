@@ -1,3 +1,3 @@
-[submodule "lama"]
+[submodule "third_party/lama"]
 	path = third_party/lama
 	url = https://github.com/advimman/lama.git
