@@ -42,3 +42,5 @@ local_settings.py
 *.log
 /src/images/
 /lib/
+/big-lama/models/best.ckpt
+/big-lama/config.yaml
