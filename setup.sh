@@ -14,6 +14,8 @@ cd $orginal_dir
 
 git submodule update --init --recursive
 
+cp setup-lama.py ./third_party/lama/setup.py
+
 #for each project in third_party directory run the setup.py if present
 orginal_dir=$(pwd)
 for dir in ./third_party/*/; do
