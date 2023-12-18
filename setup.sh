@@ -2,10 +2,15 @@ set -e
 set -x
 
 echo 'Downloading Lama model (reference https://github.com/advimman/lama/blob/main/README.md)'
+orginal_dir=$(pwd)
 cd ./src
-curl -LJO https://huggingface.co/smartywu/big-lama/resolve/main/big-lama.zip
+#check if big-lama.zip file exists
+if [ ! -f "./big-lama.zip" ]; then
+    echo "Downloading big-lama.zip"
+    curl -LJO https://huggingface.co/smartywu/big-lama/resolve/main/big-lama.zip
+fi
 unzip big-lama.zip -d big-lama/
-
+cd $orginal_dir
 #for each project in third_party directory run the setup.py if present
 orginal_dir=$(pwd)
 for dir in ./third_party/*/; do
