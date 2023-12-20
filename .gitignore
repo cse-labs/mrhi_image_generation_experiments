@@ -44,3 +44,4 @@ local_settings.py
 /lib/
 /big-lama/models/best.ckpt
 /big-lama/config.yaml
+.DS_Store

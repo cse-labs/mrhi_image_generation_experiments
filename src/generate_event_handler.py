@@ -12,7 +12,6 @@ import onpack
 from directories import fonts_dir
 from evaluations import Evaluation
 from mrhivalidator.main import validate
-from nutrientpanel import get_nutrient_panel
 from offpack import generate_mrhi_offpack
 
 load_dotenv()
@@ -211,15 +210,3 @@ def run_onpack_process(
     )
 
 
-def generate_nutrient_panel_handler(uploaded_file, target_image_path):
-    '''"""
-    This function handles the generation of a nutrient panel.
-
-    Args:
-        uploaded_file (file): The file that has been uploaded by the user.
-        target_image_path (str): The path where the generated image will be saved.
-
-    Returns:
-        The result of the get_nutrient_panel function.
-    """'''
-    return get_nutrient_panel(uploaded_file, target_image_path)
