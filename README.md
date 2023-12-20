@@ -78,12 +78,20 @@ This is manily intended only for testing purpose.
 
 ### environment variables
 VISION_KEY= <Key for Azure computer vision resource>
+
 VISION_ENDPOINT= <Azure computer vision resource endpoint>
+
 CUSTOM_VISION_KEY= <Azure custom vision resouce where the training of images have been done>
+
 CUSTOM_VISION_ENDPOINT= <Azure custom vision prediction endpoint>
+
 CUSTOM_VISION_PROJECT_ID= <Azure custom vision project endpoint>
+
 CUSTOM_VISION_ITERATION_NAME= <Azure custom vision training iteration which is to be used>
+
 VALIDATE=<Do we want to run validation? by default it is false>
+
 EVALUATE=<Do we want to run evaluation? by default it is false>
+
 ONLY_MASK=<Do we want to generate only mask? by default it is false>
 
