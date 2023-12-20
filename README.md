@@ -76,7 +76,7 @@ The "Off-pack" section has option to upload the image. There are two input boxes
 There is main.py file in the src folder. This file can be used to run the project from command line. There are two variables where we need to specify the path of the image to be inpainted and the path of the ground truth image. The ground truth image is optional.
 This is manily intended only for testing purpose.
 
-### environment variables
+### Environment variables
 VISION_KEY= <Key for Azure computer vision resource>
 
 VISION_ENDPOINT= <Azure computer vision resource endpoint>
