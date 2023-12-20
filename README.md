@@ -71,7 +71,19 @@ It also takes Bottom Lozenge text as input. This text will be used to generate t
 ![off pack image](image-3.png)
 The "Off-pack" section has option to upload the image. There are two input boxes one where we can put "product name" and other as "Gramamge". These two inputs will be used to generate the off-pack lozenges. The off-pack lozenges are generated on the fly. At the moment the colours are picked up from the image itself.
 
-
-There are 2 sections in the app
-
 2) Using the command line
+
+There is main.py file in the src folder. This file can be used to run the project from command line. There are two variables where we need to specify the path of the image to be inpainted and the path of the ground truth image. The ground truth image is optional.
+This is manily intended only for testing purpose.
+
+### environment variables
+VISION_KEY= <Key for Azure computer vision resource>
+VISION_ENDPOINT= <Azure computer vision resource endpoint>
+CUSTOM_VISION_KEY= <Azure custom vision resouce where the training of images have been done>
+CUSTOM_VISION_ENDPOINT= <Azure custom vision prediction endpoint>
+CUSTOM_VISION_PROJECT_ID= <Azure custom vision project endpoint>
+CUSTOM_VISION_ITERATION_NAME= <Azure custom vision training iteration which is to be used>
+VALIDATE=<Do we want to run validation? by default it is false>
+EVALUATE=<Do we want to run evaluation? by default it is false>
+ONLY_MASK=<Do we want to generate only mask? by default it is false>
+

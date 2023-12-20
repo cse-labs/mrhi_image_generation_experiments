@@ -12,8 +12,8 @@ from directories import (
 from generate_event_handler import run_onpack_process
 
 load_dotenv()
-input_file_name_relative = "pack/Belvita_bannana.png"
-mrhi_image_loc_relative = "mrhi/Belvita_bannana_mrhi.jpeg"
+input_file_name_relative = "pack/pack_image.png"
+mrhi_image_loc_relative = "mrhi/mrhi.jpeg"
 bottom_text = "12 PACKS"
 scan_dir = False
 
