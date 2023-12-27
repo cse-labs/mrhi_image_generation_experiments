@@ -13,7 +13,7 @@ It is ment to be used as a starting point for further experimentation and also t
 
 ## High level workflow
 
-![img.png](img.png)
+![img.png](images/img.png)
 
 For more elaborate workflow please refer to our [devblog](https://devblogs.microsoft.com/cse/2021/10/13/automating-image-inpainting-for-mrhi-generation/)
 
@@ -32,7 +32,7 @@ We won't do deep dive into how to train the custom vision model, and it is expec
 
 1) Remove on-pack elements from the image. This works well for cases where background color is of single color. In case of multi-color background, the results in some cases are not good.
 2) Works well for images where generating off-packs lozenges is good enough to be called as MRHI compatible image. The format of off-pack lozenges is as below
-![Contoso biscuits off pack](image.png)
+![Contoso biscuits off pack](images/image.png)
 Here the actual image is not touched, and the off-pack lozenges are generated on the fly. The text and information in the lozenges can be provided as input. The colours also can be specified. At the moment the colours are picked up from the image itself.
 
 ## Setup
@@ -54,7 +54,7 @@ There are two ways to use the project
 1) Using the streamlit app
 
 when you run the streamlit app, you will see below screen
-![App loaded screen](image-2.png)
+![App loaded screen](images/image-2.png)
 
 There are two sections in the app namely "On-pack" and "Off-pack". The "On-pack" section is used to remove the on-pack elements from the image. The "Off-pack" section is used to generate the off-pack lozenges.
 
@@ -64,11 +64,11 @@ The "On-pack" section has two upload image upload options. The first one is for 
 have existing MRHI image. This existing MRHI image would be used to compare with generated MRHI image to check how similar they are. The similarity is calculated using SSIM (Structural Similarity Index). The SSIM value is displayed in the app. This score will give confidence on how good the generated MRHI image is with respect to ground truth MRHI image.
 
 It also takes Bottom Lozenge text as input. This text will be used to generate the bottom lozenge. The text is optional. If not provided, the bottom lozenge will not be generated. The bottom lozenge looks like below (check 8 packs text)
-![bottom lozenge image](image-1.png)
+![bottom lozenge image](images/image-1.png)
 
 ### Off-pack
 
-![off pack image](image-3.png)
+![off pack image](images/image-3.png)
 The "Off-pack" section has option to upload the image. There are two input boxes one where we can put "product name" and other as "Gramamge". These two inputs will be used to generate the off-pack lozenges. The off-pack lozenges are generated on the fly. At the moment the colours are picked up from the image itself.
 
 2) Using the command line
