@@ -11,7 +11,7 @@ More details about MRHI can be found at https://www.gs1.org/standards/gs1-mobile
 
 ## Disclaimer
 
-The code not production ready and is only for experimentation purpose. The code is not optimized for performance and is
+This code is not production ready and is only for experimentation purpose. The code is not optimized for performance and is
 not tested for all possible scenarios.
 It is ment to be used as a starting point for further experimentation and also to record one of the workflow that can be
 used for MRHI generation with help of Azure Cognitive Services.
