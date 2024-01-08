@@ -50,25 +50,25 @@ Below are steps required:-
    the prediction endpoint and project id
 
 ```python
-   from azure.cognitiveservices.vision.customvision.prediction import CustomVisionPredictionClient
+from azure.cognitiveservices.vision.customvision.prediction import CustomVisionPredictionClient
 from msrest.authentication import ApiKeyCredentials
 
 prediction_key = os.environ["CUSTOM_VISION_KEY"]  # Assuming that the prediction key is stored in environment variable
 endpoint = os.environ[
-   "CUSTOM_VISION_ENDPOINT"]  # Assuming that the prediction endpoint is stored in environment variable
+    "CUSTOM_VISION_ENDPOINT"]  # Assuming that the prediction endpoint is stored in environment variable
 prediction_credentials = ApiKeyCredentials(
-   in_headers={"Prediction-key": prediction_key}
+    in_headers={"Prediction-key": prediction_key}
 )
 predictor = CustomVisionPredictionClient(endpoint, prediction_credentials)
 results = predictor.detect_image(
-   project_id=os.environ["CUSTOM_VISION_PROJECT_ID"],  # Assuming that the project id is stored in environment variable
-   published_name=os.environ["CUSTOM_VISION_ITERATION_NAME"],
-   # Assuming that the iteration name is stored in environment variable
-   image_data=image_bytes,
+    project_id=os.environ["CUSTOM_VISION_PROJECT_ID"],  # Assuming that the project id is stored in environment variable
+    published_name=os.environ["CUSTOM_VISION_ITERATION_NAME"],
+    # Assuming that the iteration name is stored in environment variable
+    image_data=image_bytes,
 )
 prediction_result = [
-   prediction for prediction in results.predictions if prediction.probability > 0.8
-   # pick up predictions with confidence level of 80% or more
+    prediction for prediction in results.predictions if prediction.probability > 0.8
+    # pick up predictions with confidence level of 80% or more
 ]
 
 ``````
