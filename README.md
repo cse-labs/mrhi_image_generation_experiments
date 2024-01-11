@@ -73,7 +73,7 @@ prediction_result = [
 
 ``````
 
-The above code can also be found in the file src/mask.py
+The above code can also be found in the file [src/mask.py](https://github.com/cse-labs/mrhi_image_generation_experiments/blob/main/src/mask.py#L178-L189)
 
 ## Capabilities
 
